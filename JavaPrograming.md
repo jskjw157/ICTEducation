@@ -12,15 +12,15 @@
 
 ### JVM (java virtual machine)
 
-+ 개봘한경에 맞게 플랫폼의 종속성없이 변환해주는 프로그램
++ 개발한경에 맞게 플랫폼의 종속성없이 변환해주는 프로그램
 
 + 자바 가상 머신은 통역관 역할(소스코드를 컴파일해서 서로다른환경에서도 실행 될 수 있다)
 
-+ WORA write once run anywhere 한번작성하면 어떤환경에서도 실행될수 있다.
++ WORA(write once run anywhere) 한번작성하면 어떤환경에서도 실행 될 수 있다.
 
-### JDK
+### JDK (Java Development Kit)
 
-JRE 자바 클래스 라이브러리(자바API), jVM)
++ JDK = JRE[Java Runtime Environment(자바 API = 자바 클래스 라이브러리) + jVM)]
 
 자바 API 
 
@@ -29,3 +29,19 @@ JDK에 포함된 클래스 라이브러리
 주요한기능들을 미리규현한 라이브러리
 
 
+### 변수
+
++ 기억 공간에 데이터를 보관하는 상자
+
++ 각 기억 공간을 변수(Variable)로 구분
+
+```java
+double x,y,z; //3개의 변수를 ,로 연결해 선언
+
+int weight; //변수 선언
+
+weight = 50; //변수 초기화
+
+int weight = 50; // 위와 같은 내용 변수를 선언할떄 꼭 값을 대입할 필요는 없다. 선택사항
+```
+변수 선언 후 초기화를 하지 않으면 null값으로 입력되며, 연산은 불가능 하다.
