@@ -9,8 +9,12 @@
 + 보통 프로그래밍 언어라고 하면 고급 언어를 의미하는데 C,C++,JAVA등
 
 + 고급 언어로 작성한 소스코드는 컴파일러(Compiler)라는 시스템 소프트웨어를 이용해 먼저 기계어로 구성된 실행 코드로 변환
+<br/>
 
-### JVM (java virtual machine)
+### JDK
+<br/>
+
+#### JVM (java virtual machine)
 
 + 개발한경에 맞게 플랫폼의 종속성없이 변환해주는 프로그램
 
@@ -18,7 +22,7 @@
 
 + WORA(write once run anywhere) 한번작성하면 어떤환경에서도 실행 될 수 있다.
 
-### JDK (Java Development Kit)
+#### JDK (Java Development Kit)
 
 + JDK = JRE[Java Runtime Environment(자바 API = 자바 클래스 라이브러리) + jVM)]
 
