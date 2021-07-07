@@ -92,14 +92,11 @@ int weight = 50; // 위와 같은 내용 변수를 선언할떄 꼭 값을 대�
 
 ```java
 import java.util.Scanner; //프로그램의 첫 행에 다음을 추가해 Scanner 클래스의 경로이름을 컴파이러에 알린다.
-```
-```java
+
 Scanner a= new Scanner(System.in); // Scanner 객체 생성. 키보드로 데이터를 입력 받기 위해 system.in 객체와 연결된 Scanner 객체를 생성한다.
-```
-```java
+
 int x = a.nextInt(); // Scanner 클래스가 제공하는 다양한 메서드를 이용해 키보드로 데이터를 입력 받는다.
-```
-```java
+
 a.close(); // 연결된 Scanner 객체 사용 종료
 ```
 <br/>
@@ -139,18 +136,6 @@ a.close(); // 연결된 Scanner 객체 사용 종료
 (age != b || age == c) // age는 b와 같지 않거나 c와 같다.
 ```
 <br/>
-
-
-
-        
-        
-        
-        
-
-
-
-
-
 
 ***
 
