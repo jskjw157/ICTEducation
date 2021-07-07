@@ -99,6 +99,7 @@ int x = a.nextInt(); // Scanner 클래스가 제공하는 다양한 메서드를
 
 a.close(); // 연결된 Scanner 객체 사용 종료
 ```
+<br/>
 
 #### Scanner 클래스의 주요 메서드
 <br/>
