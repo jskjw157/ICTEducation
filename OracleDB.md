@@ -1,66 +1,75 @@
 ### 데이터베이스의 개념
-</br>
+<br/>
 
 + 데이터베이스란 방대한 데이터를 효율적으로 관리하기 위해 컴퓨터에 통합저장한것
-</br>
+<br/>
 
 + 데이터베이스 관리 시스템 DBMS이라는 프로그램을 이용하여 관리
-</br>
+<br/>
 
 + 모든 조직에는 데이터베이스가 있다.
-</br>
+<br/>
 
 #### 데이터베이스 관리 시스템(DBMS)
-</br>
+<br/>
 
 + 사용자와 응용프로그램에 편리하고 효율적인 데이터베이스 사용 환경을 제공하는 소프트웨어
-</br>
+<br/>
 
 #### SQL(구조적 질의어)
-</br>
+<br/>
 
 + 테이블 튜플을 식별할 수 있는 기본키 PRIMARY KEY
-</br>
+<br/>
 
 + 외래키 FREGIN KEY 다른 릴레이션과 연결하는 속성
-</br>
+<br/>
 
-#### select문
-</br>
+***
+
+<br/>
+
+### select문
+<br/>
 
 + 특정 칼럼의 내용 검색을 하는 구문
-</br>
+<br/>
 
 + 구문 : SELECT 컬럼명 FROM 테이블명
 ```sql
 SELECT DEPTNO, ENAME, MGR FROM EMP;
 ```
-</br>
+<br/>
 
 + select뒤 컬럼명에 산술 연산자를 사용 할 수 있다.
 ```sql
 SELECT ENAME, SAL*12, COMM FROM EMP;
 ```
-</br>
+<br/>
 
 ***
 
-</br>
+<br/>
 
-### 연산자
-</br>
+#### 연산자
+<br/>
 
-+ 산술연산자
-+ 
++ 산술연산자 : 
+<br/>
+
 + 관계연산자
-+ 
+<br/>
+
 + 논리연산자
 ```sql
 select empno, ename, sal from emp where job = 'clerk' and sal > 1000;
 ```
-#### SQL 연산자
+<br/>
 
-+ between
+#### SQL 연산자
+<br/>
+
++ between (
 ```sql
 select ename from emp where hiredate between '1981/05/09' and '1981/12/17';
 ```
