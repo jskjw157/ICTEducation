@@ -92,11 +92,14 @@ int weight = 50; // 위와 같은 내용 변수를 선언할떄 꼭 값을 대�
 
 ```java
 import java.util.Scanner; //프로그램의 첫 행에 다음을 추가해 Scanner 클래스의 경로이름을 컴파이러에 알린다.
-
+```
+```java
 Scanner a= new Scanner(System.in); // Scanner 객체 생성. 키보드로 데이터를 입력 받기 위해 system.in 객체와 연결된 Scanner 객체를 생성한다.
-
+```
+```java
 int x = a.nextInt(); // Scanner 클래스가 제공하는 다양한 메서드를 이용해 키보드로 데이터를 입력 받는다.
-
+```
+```java
 a.close(); // 연결된 Scanner 객체 사용 종료
 ```
 <br/>
@@ -107,15 +110,66 @@ a.close(); // 연결된 Scanner 객체 사용 종료
 + String next() // 다음 토큰을 문자열로 리턴
 <br/>
 
-+ int nextInt() // 다음 토큰을 
++ int nextInt() // 다음 토큰을 정수 타입으로 리턴
 <br/>
 
 + float nextFloat() // 다음 토큰을 float 타입으로 리턴
 <br/>
 
-+ bollean nextBoolean()/ bollean 타입으로 리턴
++ bollean nextBoolean()/ 다음 토큰을 bollean 타입으로 리턴
 <br/>
 
 + void close() // Scanner의 사용 종료
 <br/>
 
+***
+
+<br/>
+
+### 비교연산과 논리연산
+<br/>
+
+```java
+(age >= 20) && (age < 30) //나이(int age)가 20대인 경우
+```
+```java
+(c >= 'A') && (c <= 'Z') // 문자(char c)가 대문자인 경우
+```
+```java
+(age != b || age == c) // age는 b와 같지 않거나 c와 같다.
+```
+<br/>
+
+
+
+        
+        
+        
+        
+
+
+
+
+
+
+***
+
+<br/>
+
+### 조건식
+<br/>
+
++ 조건식이 true면 실행문장1 실행 후 if-else문을 벗어남
+<br/>
+
++ false인 경우에 실행문장2 실행 후 if -else문을 벗어남
+<br/>
+
+```
+if(조건식) {
+  ....실행문장1...
+ }
+ else {
+  ...실행문장2...
+ }
+```
