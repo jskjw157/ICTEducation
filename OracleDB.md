@@ -35,20 +35,16 @@
 + 특정 칼럼의 내용 검색을 하는 구문
 <br/>
 
-+ 구문 : SELECT 컬럼명 FROM 테이블명
++ 구문 : SELECT 칼럼명 FROM 테이블명
 ```sql
 SELECT DEPTNO, ENAME, MGR FROM EMP;
 ```
 <br/>
 
-+ select뒤 컬럼명에 산술 연산자를 사용 할 수 있다.
++ select뒤 칼럼명에 산술 연산자를 사용 할 수 있다.
 ```sql
 SELECT ENAME, SAL*12, COMM FROM EMP;
 ```
-<br/>
-
-***
-
 <br/>
 
 #### 연산자
@@ -87,6 +83,10 @@ select empno, ename, sal from emp where job = 'clerk' and sal > 1000;
 <br/>
 
 + 칼럼명을 변경하기 위해 별칭을 사용한다.
+<br/>
+
++ 기본적으로 selcet 절에 소문자로 별칭을 준 경우에도, 결과로 나타나는 heading은 항상 대문자 이다.
+<br/>
 
 + 별칭 사용 방법
 
@@ -94,7 +94,33 @@ select empno, ename, sal from emp where job = 'clerk' and sal > 1000;
 
   + AS 키워드 사용
 
-  + 이중 인용부호(" ") 사용
+  + 이중 인용부호(" ") 사용 (별칭에 공백 또는 특수문자(#,_)와 한글을 포함하거나 대소문자구분이 필요한 경우 사용)
+<br/>
+
+```SQL
+select ename, sal, sal*12 Annual_Salary
+from emp;
+
+
+ENAME                       SAL ANNUAL_SALARY
+-------------------- ---------- -------------
+SMITH                       800          9600
+ALLEN                      1600         19200
+WARD                       1250         15000
+JONES                      2975         35700
+MARTIN                     1250         15000
+BLAKE                      2850         34200
+CLARK                      2450         29400
+KING                       5000         60000
+TURNER                     1500         18000
+JAMES                       950         11400
+FORD                       3000         36000
+
+ENAME                       SAL ANNUAL_SALARY
+-------------------- ---------- -------------
+MILLER                     1300         15600
+```
+<br/>
 
 #### SQL 연산자
 <br/>
