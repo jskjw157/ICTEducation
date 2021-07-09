@@ -222,3 +222,4 @@ switch(score/10) {
 <br/>
 
 + void 메소드일 경우 return 명령어 입력시 메소드가 종료된다. 
++ int 메소드일 경우 return 0 명령어 입력시 메소드가 종료된다.
