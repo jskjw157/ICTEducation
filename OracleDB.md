@@ -79,6 +79,49 @@ select empno, ename, sal from emp where job = 'clerk' and sal > 1000;
 ```
 <br/>
 
++ 연결 연산자 : ||
+
+  + 원하는 칼럼들을 서로 연결시키거나
+  
+  + 칼럼들을 산술 표현식 또는 상수 값과 연결하여 하나의 문자 형태로 표현한다.
+  
+```sql
+select ename||job
+from emp;
+
+ENAME||JOB
+-------------------
+SMITHCLERK
+ALLENSALESMAN
+WARDSALESMAN
+JONESMANAGER
+MARTINSALESMAN
+BLAKEMANAGER
+CLARKMANAGER
+SCOTTANALYST
+KINGPRESIDENT
+TURNERSALESMAN
+ADAMSCLERK
+```
+```sql
+select ename||job "사원별업무" from emp;
+
+사원별업무
+-------------------
+SMITHCLERK
+ALLENSALESMAN
+WARDSALESMAN
+JONESMANAGER
+MARTINSALESMAN
+BLAKEMANAGER
+CLARKMANAGER
+SCOTTANALYST
+KINGPRESIDENT
+TURNERSALESMAN
+ADAMSCLERK
+```
+<br/>
+
 #### ALIAS(별칭)
 <br/>
 
@@ -121,6 +164,7 @@ ENAME                       SAL ANNUAL_SALARY
 MILLER                     1300         15600
 ```
 <br/>
+
 
 #### SQL 연산자
 <br/>
@@ -354,13 +398,6 @@ ORA-01441: 일부 값이 너무 커서 열 길이를 줄일 수 없음
 ```
 기존의 데이터의 값이 변경하려는 값의 길이보다 커서 오류 발생
 
-#### DROP (기존 컬럼 삭제)
-
-```sql
- ALTER TABLE emp4
-  2  drop column sal;
-```
-
 #### DROP TABLE (테이블 구조 삭제)
 
 + 테이블의 구조와 입력된 데이터를 모두 삭제
@@ -381,3 +418,211 @@ ALTER TABLE EMP_HW MODIFY BIGO VARCHAR2(30);
 ALTER TABLE EMP_HW RENAME COLUMN BIGO TO REMARK;
  
 ALTER TABLE EMP_HW  ADD BIGO VARCHAR2(20);
+
+
+#### DROP (기존 컬럼 삭제)
+
+```sql
+ ALTER TABLE emp4
+  2  drop column sal;
+```
+
+### 뷰(VIEW)
+</br>
+
++ 뷰의 필요성 : 하나의 테이블 혹은 여러 테이블에 대하여 특정 사용자나 조직의 관점에서 디에터를 바라볼 수 있도록 해주는 수단
+</br>
+
++ 가상의 테이블
+</br>
+
++ 뷰의 생성 이유
+  
+  + 보안성 : 테이블의 특정 열을 노출하고 싶지 않은 경우.
+
+  + 편리성 : select문의 서브쿼리를 굳이 사용 안해도 된다.
+</br>
+
++ 뷰 권한부여
+
+```SQL
+GRANT CREATE VIEW to scott;
+```
+</br>
+
+#### VIEW의 생성 (CREATE VIEW)
+</br>
+
++ 기존 테이블과 칼럼명이 같은 뷰 생성
+
+```SQL
+CREATE [OR REPLACE] VIEW 뷰명
+AS 서브쿼리;
+```
+</br>
+
++ 기본 테이블과 칼럼명이 다른 뷰 생성
+
+```sql
+CREATE [OR REPLACE] VIEW 뷰명[(칼럼명,...)]
+AS 서브쿼리
+```
+
+```SQL
+  create view empview30
+  2  as
+  3  select empno, ename, job
+  4  from empcopy
+  5  where deptno =30;
+
+  select * from empview30;
+
+     EMPNO ENAME      JOB
+---------- ---------- ---------
+      7499 ALLEN      SALESMAN
+      7521 WARD       SALESMAN
+      7654 MARTIN     SALESMAN
+      7698 BLAKE      MANAGER
+      7844 TURNER     SALESMAN
+      7900 JAMES      CLERK
+ ```
+</br>
+
+***
+
+</br>
+
+### DML(Data Manipulation Language)
+</br>
+
+#### INSERT(데이터 추가)
+</br>
+
++ 기본적인 데이터 추가
+
+```sql
+INSERT INTO 테이블명(칼럼명, 칼럼명....)
+VALUES(값, 값, ...);
+```
+```SQL
+INSERT INTO deptcopy(deptno, dname, loc) VALUES(11, 'Finance', 2);
+
+select * 
+from deptcopy;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       DALLAS
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+        11 Finance        2
+```
+</br>
+
++ NULL 값을 포함한 데이터 추가
+
+```SQL
+INSERT INTO deptcopy
+VALUES(13, 'Administration', NULL);
+
+SELECT * FROM deptcopy;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       DALLAS
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+        11 Finance        2
+        13 Administration
+ ```
+</br>
+
+#### UPDATE(데이터 변경)
+</br>
+
++ 테이블의 모든 행 변경
+
+```sql
+ update empcopy
+  2  set deptno = 40;
+```
+</br>
+
++ 테이블의 특정 행 변경
+
+```sql
+update empcopy
+set deptno = 30, job ='SALESMAN'
+where empno=7369;
+```
+</br>
+
++ 서브쿼리를 이용한 변경
+
+```sql
+UPDATE 테이블명
+SET (칼럼명,칼럼명...) = 서브쿼리
+[WHERE 조건;]
+```
+```sql
+UPDATE deptcopy2
+SET loc = (SELECT loc
+           FROM deptcopy2
+           WHERE deptno = 40)
+WHERE deptno = 20;
+
+SELECT * FROM deptcopy2;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       BOSTON
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+        11 Finance        2
+        13 Administration
+```
+</br>
+
+#### DELETE(데이터 삭제)
+</br>
+
++ 테이블의 모든 데이터 삭제
+
+```SQL
+DELETE FROM 테이블명
+```
+```SQL
+DELETE FROM test;
+```
+</br>
+
++ 특정 데이터 삭제
+
+```sql
+DELETE FROM 테이블명
+WHERE 조건;
+```
+```SQL
+DELETE FROM empcopy
+WHERE deptno = 10;
+```
+</br>
+
++ 서브쿼리를 이용한 데이터 삭제
+
+```sql
+DELETE FROM 테이블명
+WHERE 서브쿼리;
+```
+```SQL
+DELETE FROM empcopy
+WHERE deptno = ( SELECT deptno
+                 FROM deptcopy
+                 WHERE dname = 'ACCOUNTING');
+```
+</br>
+
+### 트랜잭션(TRANSACTION) 관리
