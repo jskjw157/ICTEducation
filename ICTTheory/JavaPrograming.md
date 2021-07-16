@@ -262,6 +262,7 @@ while(i<10){
 	System.out.print(i);
 	i++;
 }
+```
 <br/>
 
 ### Array(배열)
