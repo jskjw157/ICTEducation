@@ -129,4 +129,21 @@
 + 안드로이드폰의 기능을 90% 정도 사용할 수 있지만 실제 안드로이드폰보다 느리다는 것을 감수해야 한다.
 <br/>
 
+### android studio
+<br/>
+
+#### java file
+
++ AppCompatActivity class
+
+안드로이드 기본 화면을 구현하는데 사용되는 클래스
+
++ setContentView()
+
+xml 파일을 연결해주는 함수
+
++ findViewById()
+
+id 해당되는 뷰를 찾는 함수
+
 
