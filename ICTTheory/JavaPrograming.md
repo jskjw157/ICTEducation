@@ -252,6 +252,18 @@ for(초기문; ; 반복 후 작업;) { //반복 조건이 비어 있으면 true�
 #### while 문
 <br/>
 
+```java
+whlie(조건식){
+	...작업문...
+}
+
+i = 0;
+while(i<10){
+	System.out.print(i);
+	i++;
+}
+<br/>
+
 ### Array(배열)
 <br/>
 
