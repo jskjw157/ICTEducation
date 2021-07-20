@@ -133,17 +133,98 @@
 <br/>
 
 #### java file
+<br/>
 
-+ AppCompatActivity class
++ AppCompatActivity class : 안드로이드 기본 화면을 구현하는데 사용되는 클래스
+<br/>
 
-안드로이드 기본 화면을 구현하는데 사용되는 클래스
++ setContentView() : xml 파일을 연결해주는 함수
+<br/>
 
-+ setContentView()
++ findViewById() : id 해당되는 뷰를 찾는 함수
+<br/>
 
-xml 파일을 연결해주는 함수
+***
 
-+ findViewById()
+<br/>
 
-id 해당되는 뷰를 찾는 함수
+### 뷰와 뷰그룹
+<br/>
 
+#### view 클래스
+<br/>
 
++ 안드로이드 화면에서 실제로 사용되는 것들은 모두 view클래스 상속을 받음
+<br/>
+
++ 다른말로 위젯이라고도함
+<br/>
+
++ 다른위젯을 담을수있는위젯은 레이아웃이라고함
+<br/>
+
++ 레이아웃은 ViewGroup 클래스 아래존재
+<br/>
+
++ 레이아웃도 크게 보면 위젯도 포함됨
+<br/>
+
+#### id 속성
+<br/>
+
++ id속성은 모든위젯의 아이디를 나타냄
+<br/>
+
++ java코드에서 위젯에 접근할떄 id속성에 저장한 아이디 사용
+<br/>
+
++ 위젯에 아이디를 새로 부여하는 개념이므로 "@+id"
+
+```xml
+<LinearLayout
+  ~~~~중간생략~~~~~
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안녕하세요!"
+         />
+</LinearLayout>
+  ```
+```java
+Button button1;
+button1 = (Button) findViewById(R.id.btn1);
+```
+<br/>
+
+#### layout_width, layout_height속성
+<br/>
+
++ match_parent :자신의 부모(대개는 레이아웃)에 폭이나 높이를 맞춤
+<br/>
+
++ wrap_content : 자신의 폭이나 높이를 자신안의 글자가 들어갈 정도로만 설정
+
+```xml
+<LinearLayout
+  ~~~~중간생략~~~~~
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안녕하세요!"
+         />
+</LinearLayout>
+  ```
+<br/>
+
+#### background속성
+<br/>
+
++ 속성은 위젯의 색상을 주로 #RRGGBB 값으로 지정
+<br/>
+
++ 각 값은 빨간색 , 초록색, 파란색을 의미함
+<br/>
+
+#### view클래스의 xml속성
