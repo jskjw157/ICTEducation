@@ -228,3 +228,106 @@ button1 = (Button) findViewById(R.id.btn1);
 <br/>
 
 #### view클래스의 xml속성
+
++ padding 속성 : 레이아웃 안의 요소들이 경계선에서 떨어져서 출력되는 요소
+
+```xml
+<LinearLayout
+              android:padding = '30dp'>
+    <TextView
+              android:hint='여기에 채우세요' />
+    <Button
+            android:text='확인 />
+</LinearLayout>
+```
+
++ layout_margin 속성 : 위젯과 위젯 사이에 여유를 두고 싶다면 layout_margin
+
+```xml
+<LinearLayout
+              android:padding = '30dp'>
+    <TextView
+              android:layout_margin='20dp'
+              android:hint='여기에 채우세요' />
+    <Button
+            android:layout_margin='20dp'
+            android:text='확인 />
+</LinearLayout>
+```
++ visibillity속성
+
+속성은 위젯을 보일것인지 여부를 설정
+세가지 값을 지정할 수 있다
+visible 보이는 상태
+invisible 보이지 않을 뿐 원래의 자리를 계속 유지
+gone 보이지 않고 그 자리까지 아예내놓는다.
+```xml
+<button
+        android:text = "버튼 1"/>
+<button
+        android:visibility = "invisible"
+        android:text = "버튼 2"/>
+<button
+        android:visibility= "visible"
+        android:text = "버튼 3"/>
+<button
+        android:visibility= "gone"
+        android:text = "버튼 4"/>
+
+```
++ enabled, clickable 속성
+
+enabled : 위젯의 동작 여부
+clickable : 클릭이나 터치가 가능하도록 함
+true와 false로 지정(디폴트:true)
+xml보다 java 코드에서 주로 사용함
+```xml
+<button
+        android:text = "버튼 1"/>
+<button
+        android:enabled= "false"
+        android:text = "버튼 2"/>
+<button
+        android:clickable= "false"
+        android:text = "버튼 3"/>
+```
+
++ rotaion 속성
+rotaion은 위젯을 회전시켜서 출력
+값은 각도로 지정
+
+### 위젯 다루기
+
+#### 텍스트뷰
+```java
+java.lang.Object
+  android.view.view
+    android.widget.TextView
+ ```
+ text:텍스트뷰에 나타나는 문자열 표현
+ textColor:글자의 색상을지정, #RRGBB나 #aarrggbb형식
+ textSize:글자의 크기를 지정
+ textStyle: 글자의 스타일을 지정
+ typeface : 글자의 글꼴을 지정
+ singleLine : 글이 길어 줄이 넘어갈 경우 강제로 한 줄까지만 출력하고 문자열의 맨 뒤에 "..."을 표시
+ 
+ #### 버튼을 클릭했을 때 동작한는 Java 코드 3단계
+ 
+ 버튼 변수 선언
+ Button mybutton;
+ 변수에 버튼 위젯 대입
+ mybutton = (Button)findViewById(R.id.button1);
+ 버튼을 클릭할때 동작하는 클래스 정의
+ mybutton.setOnClickListener(new View.onClickListener() {
+      public void onClick(View v){
+      //동작 내용을 이 부분에 코딩
+      }
+)};
+
+#### 에디트텍스트의 값을 가져오는 java코드 3단계
+에디트텍스트 변수선언
+EditText myEdit;
+변수에 에디트텍스트 위젯 대입
+myEdit = (EditText) findViewById(R.id.edittext1);
+에디트텍스트에 입력된 값 가져오기 주로버튼 클릭 이벤트 리스너 안에 삽입
+String byStr = byEdit.getText().toString();
