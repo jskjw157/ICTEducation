@@ -492,7 +492,12 @@ public class circle { //접근권한, 클래스 선언, 클래스 이름
 ```
 <br/>
 
-### 생성자의 특징
+***
+
+### 생성자
+<br/>
+
+#### 생성자의 특징
 <br/>
 
 + 생성자는 메소드
@@ -514,4 +519,173 @@ public class circle { //접근권한, 클래스 선언, 클래스 이름
 <br/>
 
 + 생성자는 객체가 생성될 때 반드시 호출됨.
+<br/>
+
+#### 기본 생성자
+<br/>
+
++ 기본생성자
+
+	+ 매개 변수 없고 아무 작업 없이 단순 리턴하는 생성자
+	
+	+ 디폴트 생성자라고도 부름
+	<br/>
+
++ 클래스에 생성자가 하나도 선언되지 않은 경우, 컴파일러에 의해 자동으로 삽입
+
+```java
+public class Circle { // 개발자가 작성한 코드에는 생성자가 없지만 컴파일 오류가 생기지 않음 
+	
+	int radius;
+	String  name;
+	
+	public double getArea() {
+		return 3.14*radius*radius;
+
+	}
+	
+	public static void main(String[] args) {
+		
+			Circle circle = new Circle();
+			circle.getArea();
+	}
+}
+```
+<br/>
+
++ 개발자가 클래스에 생성자가 하나라도 작성한경우 기본생성자 자동 삽입되지 않음
+
+```java
+public class Circle { // 개발자가 작성한 코드에는 생성자가 없지만 컴파일 오류가 생기지 않음 
+	
+	int radius;
+	String  name;
+	
+	public double getArea() {
+		return 3.14*radius*radius;
+
+	}
+	
+	public Circle(int r) {
+		radius = r;
+	}
+	
+	public static void main(String[] args) {
+		
+			Circle circle = new Circle();  // 오류 컴파일러가 기본생성자를 자동 생성하지않음
+			circle.getArea();
+	}
+}
+```
+<br/>
+
+### this 레퍼런스
+<br/>
+
++ 객체 자신에 대한 레퍼런스
+<br/>
+
++ 현재 실행되는 메소드가 속한 객체의 맴버
+<br/>
+
++ 현재 객체의 맴버 변수
+	
+	+ 컴파일러에 의해 자동 관리, 개발자는 사용하기만 하면됨
+	
+	+ this.맴버 형태로 맴버 사용
+
+```java
+public class Circle {
+	
+	int radius;
+	
+	public Circle() {
+		this(1);
+	}
+	
+	public Circle(int radius) { // 매개 변수를 가진 생성자
+		this.radius = radius; // 매개 변수로 필드 초기화
+	}
+
+	public double getArea() {
+		return 3.14*radius*radius;
+
+	}
+}
+```
+
+```java
+public class Circle {
+	int radius;
+	
+	public Circle(int radius) {
+		this.radius = radius;
+	}
+	
+	public void set(int radius) { 
+		this.radius = radius; 
+	}
+	
+	public static void main(String[] args) {
+	
+		Circle ob1 = new Circle(1); // ob1 = 1
+		Circle ob2 = new Circle(2); // ob1 = 2
+		Circle ob3 = new Circle(3); // ob1 = 3
+		
+		
+		ob1.set(4); // ob1 = 4
+		ob2.set(5); // ob2 = 5
+		ob3.set(6); // ob3 = 6
+	}
+}
+```
+<br/>
+
+#### this()
+<br/>
+
++ 클래스 내의 다른 생성자 호출
+<br/>
+
++ 생성자 내에서만 사용 가능
+<br/>
+
++ 반드시 생성자 코드의 제일 처음에 
+
+```java
+public class Book {
+
+	
+		String title;
+		String author;
+		public void show() {
+			System.out.println(title + " " + author);
+		}
+		
+		public Book() {
+			this("","");
+		}
+		
+		public Book(String title) {
+			this(title, "작자미상");
+		}
+		
+		public Book(String title,String author) {
+			this.title = title;
+			this.author = author;
+		}
+
+		public static void main(String[] args) {
+			
+			Book littlePrince = new Book("어린왕자", "생텍쥐페리");
+			Book loveStory = new Book("춘향전");
+			Book emptyBook = new Book();
+			
+			littlePrince.show();
+			loveStory.show();
+			emptyBook.show();
+		}
+
+}
+```
 <br/>
